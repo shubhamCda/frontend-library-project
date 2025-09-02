@@ -1,7 +1,7 @@
-//@ts-ignore
+console.log("Welcome, Shubham Bodalkar");
 
-function sum(a:number, b:number) {
-  return a + b;
+function sum(a: number, b: number) {
+	return a + b;
 }
 
-console.log(sum(4,5));
+console.log(sum(4, 5));
