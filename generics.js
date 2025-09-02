@@ -20,11 +20,13 @@ var boolResult = multiDatatypeReturn(true);
 // console.log(numResult);
 // console.log(strResult);
 // console.log(boolResult);
-function addOrConcat(a, b) {
+function addOrConcat(a, b, c) {
     return a + b;
 }
-var numResultAdd = addOrConcat(45, 30);
-var strResultAdd = addOrConcat("shubha", " Mamu");
+// const numResultAdd = addOrConcat<number>(45,30)
+// const strResultAdd = addOrConcat<string>("shubha", " Mamu")
+var numResultAdd = addOrConcat(45, "tulsi", true);
+var strResultAdd = addOrConcat("shubha", 23, false);
 // const boolResultAdd = addOrConcat<boolean>(true)
 console.log(numResultAdd);
 console.log(strResultAdd);

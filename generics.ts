@@ -31,13 +31,16 @@ const boolResult = multiDatatypeReturn<boolean>(true)
 // console.log(boolResult);
 
 
-function addOrConcat<T>(a:any, b:any):T {
+function addOrConcat<T, U>(a:T, b:U, c:boolean):T {
   return a + b;
 }
 
 
-const numResultAdd = addOrConcat<number>(45,30)
-const strResultAdd = addOrConcat<string>("shubha", "Mamu")
+// const numResultAdd = addOrConcat<number>(45,30)
+// const strResultAdd = addOrConcat<string>("shubha", " Mamu")
+
+const numResultAdd = addOrConcat<number, string>(45,"tulsi", true)
+const strResultAdd = addOrConcat<string, number>("shubha", 23, false)
 // const boolResultAdd = addOrConcat<boolean>(true)
 
 console.log(numResultAdd);
