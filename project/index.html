@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Github Search API</title>
-</head>
-<body>
-  
-  <script type="module" src="./dist/index.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Github Search App in TS</title>
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
+	<body>
+		<section>
+			<div class="search-input">
+				<form action="" id="form">
+					<input
+						type="text"
+						id="user"
+						placeholder="search username"
+						autocomplete="off"
+					/>
+          <button>Search</button>
+				</form>
+			</div>
+      <div class="main-container"></div>
+		</section>
+
+		<script type="module" src="./dist/index.js"></script>
+	</body>
 </html>
