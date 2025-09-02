@@ -51,3 +51,37 @@ const employee: EmployeeDetails = {
 //this contains all the properties
 
 
+//Given two TypeScript types: User and MyLocation. Create a function to generate Profile of user.
+
+
+type User = {
+  name: string;
+  age: number;
+}
+
+type MyLocation = {
+  city: string;
+  country: string;
+}
+
+const user = { name: "shubh", age: 31 };
+const location = { city: "Nagpur", country: "India" };
+
+
+// const createUserProfile = (user: User, location: MyLocation) => {
+//   return `My name is ${user.name} and I live in the ${location.city} city.`
+// }
+
+// createUserProfile(user, location);
+
+
+
+//If we want complete user profile
+
+const createUserProfile = (user: User, location: MyLocation) => {
+  return {...user, ...location}
+}
+
+const myCompleteInfo: User & Location = createUserProfile(user, location);
+
+console.log(myCompleteInfo);
