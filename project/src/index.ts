@@ -8,7 +8,7 @@ interface UserData {
 	id: string;
 	login: string;
 	avatar_url: string;
-	url: string;
+	html_url: string;
 }
 
 async function customFetchData<T>(
@@ -26,17 +26,18 @@ async function customFetchData<T>(
 }
 
 function generateUI(singleUser: UserData) {
-  const { id, avatar_url, login, url } = singleUser;
+	const { id, avatar_url, login, html_url } = singleUser;
 
 	mainContainer.insertAdjacentHTML(
 		"beforeend",
 		`
-    <div class="card">
+		<div class="card">
 			<img src="${avatar_url}" alt="${login}">
 			<hr/>
 			<div class="card-footer">
 				<img src="${avatar_url}" alt="${login}">
-				<a href="${url}">Github</a>
+        <h3 style="color: white;">${login}</h3>
+				<a href="${html_url}" target="_blank">Github</a>
 			</div>
 		</div>
     `
@@ -46,11 +47,39 @@ function generateUI(singleUser: UserData) {
 function fetchUserData(url: string) {
 	customFetchData<UserData[]>(url, {}).then((user) => {
 		for (const singleUser of user) {
-      generateUI(singleUser);
-      console.log(`user:${singleUser}`);
-      
+			generateUI(singleUser);
+			console.log(`user:${singleUser}`);
 		}
 	});
 }
 
 fetchUserData(dataURL);
+
+//search functionality
+
+formSubmit.addEventListener("submit", async (e) => {
+	e.preventDefault();
+	const searchInput = searchElement.value.toLowerCase();
+
+	try {
+		const allUserData = await customFetchData<UserData[]>(dataURL, {});
+		const matchingUser = allUserData.filter((user) =>
+			user.login.toLowerCase().includes(searchInput)
+		);
+
+		mainContainer.innerHTML = "";
+		if (matchingUser.length === 0) {
+			mainContainer?.insertAdjacentHTML(
+				"beforeend",
+				`<p class="empty-msg">No matching user found!</p>
+        `
+			);
+		} else {
+			for (const searchUser of matchingUser) {
+				generateUI(searchUser);
+			}
+		}
+	} catch (error) {
+		console.error("Error", error);
+	}
+});
