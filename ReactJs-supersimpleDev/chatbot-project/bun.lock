@@ -1,0 +1,13 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "dependencies": {
+        "supersimpledev": "^8.6.4",
+      },
+    },
+  },
+  "packages": {
+    "supersimpledev": ["supersimpledev@8.6.4", "", { "bin": { "supersimpledev": "bin/supersimpledev.js" } }, "sha512-zM011XhEpHtHl9O2S7Oc5nOVNOYkMehE+WjP1MsRO1f8BZbwe/OMG3qXVe3e0s8JUx62hMQQXxbATzRMucUkZQ=="],
+  }
+}
